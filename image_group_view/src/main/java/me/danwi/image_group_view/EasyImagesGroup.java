@@ -59,6 +59,12 @@ public class EasyImagesGroup extends ViewGroup implements View.OnClickListener {
 
         int count = getChildCount();
 
+        //先测量一波
+        for (int i = 0; i < count; i++) {
+            View view = getChildAt(i);
+            measureChild(view, widthMeasureSpec, heightMeasureSpec);
+        }
+
         if (widthMode == MeasureSpec.AT_MOST) {
             if (count > 0) {
                 //每一个子元素width,height都是一样的
@@ -83,10 +89,6 @@ public class EasyImagesGroup extends ViewGroup implements View.OnClickListener {
             }
         }
 
-        for (int i = 0; i < count; i++) {
-            View view = getChildAt(i);
-            measureChild(view, widthMeasureSpec, heightMeasureSpec);
-        }
 
         setMeasuredDimension(widthSize, heightSize);
     }
