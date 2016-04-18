@@ -29,6 +29,9 @@ public class EasyImagesGroup extends ViewGroup implements View.OnClickListener {
 
     public EasyImagesGroup(Context context) {
         super(context);
+        lineCount = 3;
+        vSpace = 10;
+        hSpace = 10;
     }
 
     public EasyImagesGroup(Context context, AttributeSet attrs) {
@@ -52,6 +55,9 @@ public class EasyImagesGroup extends ViewGroup implements View.OnClickListener {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (heightMeasureSpec == 0) {
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.AT_MOST);
+        }
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
